@@ -13,6 +13,7 @@ class Form extends Component {
           Nome
           <input
             id="nameInput"
+            name="cardName"
             data-testid="name-input"
             type="text"
             value={ cardName }
@@ -24,6 +25,7 @@ class Form extends Component {
           Descrição
           <input
             id="descriptionInput"
+            name="cardDescription"
             data-testid="description-input"
             type="textarea"
             value={ cardDescription }
@@ -35,6 +37,7 @@ class Form extends Component {
           Atributo 1
           <input
             id="attr1"
+            name="cardAttr1"
             data-testid="attr1-input"
             type="number"
             value={ cardAttr1 }
@@ -46,6 +49,7 @@ class Form extends Component {
           Atributo 2
           <input
             id="arrt2"
+            name="cardAttr2"
             data-testid="attr2-input"
             type="number"
             value={ cardAttr2 }
@@ -57,6 +61,7 @@ class Form extends Component {
           Atributo 3
           <input
             id="arrt3"
+            name="cardAttr3"
             data-testid="attr3-input"
             type="number"
             value={ cardAttr3 }
@@ -68,6 +73,7 @@ class Form extends Component {
           Imagem
           <input
             id="imageInput"
+            name="cardImage"
             data-testid="image-input"
             type="text"
             value={ cardImage }
@@ -76,8 +82,8 @@ class Form extends Component {
         </label>
 
         <select
-          name="selectcardType"
           id="selectcardType"
+          name="selectcardType"
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
@@ -113,9 +119,9 @@ class Form extends Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
