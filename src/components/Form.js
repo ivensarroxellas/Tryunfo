@@ -8,7 +8,7 @@ class Form extends Component {
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
 
     return (
-      <>
+      <form>
         <label htmlFor="nameInput">
           Nome
           <input
@@ -106,7 +106,7 @@ class Form extends Component {
         >
           Salvar
         </button>
-      </>
+      </form>
     );
   }
 }
