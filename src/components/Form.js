@@ -83,7 +83,7 @@ class Form extends Component {
 
         <select
           id="selectcardType"
-          name="selectcardType"
+          name="cardRare"
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
@@ -96,10 +96,10 @@ class Form extends Component {
         <label htmlFor="checkIfTrunfo">
           Super Trunfo
           <input
-            type="checkbox"
             id="checkIfTrunfo"
+            name="cardTrunfo"
+            type="checkbox"
             data-testid="trunfo-input"
-            name="superFrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
