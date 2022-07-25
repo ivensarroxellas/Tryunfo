@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo,
+      cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
 
     return (
@@ -94,7 +94,7 @@ class Form extends Component {
             id="checkIfTrunfo"
             data-testid="trunfo-input"
             name="superFrunfo"
-            value={ cardTrunfo }
+            checked={ cardTrunfo }
             onChange={ onInputChange }
           />
         </label>
@@ -102,7 +102,7 @@ class Form extends Component {
           type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onChange={ onSaveButtonClick }
+          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
