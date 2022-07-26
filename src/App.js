@@ -13,7 +13,13 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    cardDeck: [],
   }
+
+  handleChange = (event) => {
+    this.setState(() => ({ [event.target.name]: event.target.value }),
+      this.handledButton);
+  };
 
   handledButton = () => {
     const { cardName, cardDescription, cardImage, cardAttr1,
@@ -40,16 +46,24 @@ class App extends React.Component {
     });
   }
 
-  handleChange = (event) => {
-    this.setState(() => ({ [event.target.name]: event.target.value }),
-      this.handledButton);
-  };
+  onSaveButtonClick =() => {
+    this.setState((prevState) => ({
+      cardDeck: [...prevState.cardDeck, prevState],
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+    }));
+  }
 
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1,
       cardAttr2, cardAttr3, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
     return (
-      <>
+      <form>
         <h1>Tryunfo</h1>
         <Form
           cardName={ cardName }
@@ -62,6 +76,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
@@ -73,7 +88,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-      </>
+      </form>
     );
   }
 }
