@@ -12,19 +12,42 @@ class App extends React.Component {
     cardAttr3: '',
     cardRare: '',
     cardTrunfo: false,
+    isSaveButtonDisabled: true,
   }
 
-  handleChange = (event) => {
-    console.log(event.target.value);
+  handledButton = () => {
+    const { cardName, cardDescription, cardImage, cardAttr1,
+      cardAttr2, cardAttr3 } = this.state;
+    const maxAttrTotal = 210;
+    const maxAttrUnt = 90;
+
+    const checkVoid = !cardName || !cardDescription || !cardImage
+    || !cardAttr1 || !cardAttr2 || !cardAttr3;
+
+    const checkNegative = parseInt(cardAttr1, 10) < 0 || parseInt(cardAttr2, 10) < 0
+    || parseInt(cardAttr3, 10) < 0;
+
+    const checkLessThan210 = Number(cardAttr1) + Number(cardAttr2)
+    + Number(cardAttr3) > maxAttrTotal;
+
+    const checkUnitLessThan90 = parseInt(cardAttr1, 10) > maxAttrUnt
+    || parseInt(cardAttr2, 10) > maxAttrUnt || parseInt(cardAttr3, 10) > maxAttrUnt;
+
+    const button = checkVoid || checkNegative || checkLessThan210 || checkUnitLessThan90;
 
     this.setState({
-      [event.target.name]: event.target.value,
+      isSaveButtonDisabled: !!button,
     });
   }
 
+  handleChange = (event) => {
+    this.setState(() => ({ [event.target.name]: event.target.value }),
+      this.handledButton);
+  };
+
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1,
-      cardAttr2, cardAttr3, cardRare, cardTrunfo } = this.state;
+      cardAttr2, cardAttr3, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <>
         <h1>Tryunfo</h1>
@@ -38,6 +61,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
