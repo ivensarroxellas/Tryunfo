@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import './CSS components/DeckExposed.css';
 
 class DeckExposed extends Component {
   render() {
@@ -18,8 +19,8 @@ class DeckExposed extends Component {
         cardTrunfo={ unitCard.cardTrunfo }
       />));
     return (
-      <div data-testid="missions">
-        <div>Minhas Cartas</div>
+      <div className="deck">
+        <h1>Minhas Cartas</h1>
         {allCreatedCards}
       </div>
     );
